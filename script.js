@@ -2,7 +2,14 @@ const API_URL = 'https://health-risk-calculator-unp-node-f5hygtdhemhxc6ef.centra
 
 
 // Wake up server when page loads
-fetch(`${API_URL}/api/ping`)
-    .then(response => response.text())
-    .then(text => console.log('Server says:', text))
-    .catch(error => console.error('Ping failed:', error))
+async function pingServer() {
+    try {
+        const response = await fetch(`${API_URL}/api/ping`)
+        const text = await response.text()
+        console.log('Server says:', text)
+    } catch (error) {
+        console.error('Ping failed:', error)
+    }
+}
+
+pingServer()

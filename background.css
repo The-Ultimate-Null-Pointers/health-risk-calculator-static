@@ -1,0 +1,81 @@
+/*
+AI DISCLAIMER: The following styling was generated with the assistance of ChatGPT and modified/tested by a human developer.
+*/
+
+
+/* The background fills the viewport and stays fixed while scrolling. */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+
+    background: radial-gradient(
+        ellipse at bottom,
+        #1b2735 0%,
+        #090a0f 100%
+    );
+
+    /* JavaScript sets this to the viewport height. */
+    --tile-height: 100vh;
+}
+
+/* Shared styling for all three star layers. */
+.background .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 1px;
+    height: 1px;
+
+    background: transparent;
+    box-shadow: var(--star-shadows, none);
+
+    animation: star-scroll 50s linear infinite;
+    will-change: transform;
+}
+
+/* Duplicate the stars one tile below for seamless scrolling. */
+.background .stars::after {
+    content: "";
+    position: absolute;
+    top: var(--tile-height);
+    left: 0;
+
+    width: inherit;
+    height: inherit;
+
+    background: transparent;
+    box-shadow: inherit;
+}
+
+/* Smaller stars move fastest. */
+.background .stars--small {
+    animation-duration: 50s;
+}
+
+/* Medium stars move more slowly. */
+.background .stars--medium {
+    width: 2px;
+    height: 2px;
+    animation-duration: 100s;
+}
+
+/* Larger stars move slowest, creating depth. */
+.background .stars--large {
+    width: 3px;
+    height: 3px;
+    animation-duration: 150s;
+}
+
+@keyframes star-scroll {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(calc(var(--tile-height) * -1));
+    }
+}

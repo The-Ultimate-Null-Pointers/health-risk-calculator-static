@@ -1,4 +1,4 @@
-const API_URL = 'https://health-risk-calculator-unp-node-f5hygtdhemhxc6ef.centralus-01.azurewebsites.net/'
+const API_URL = 'https://health-risk-calculator-unp-node-f5hygtdhemhxc6ef.centralus-01.azurewebsites.net'
 
 
 // Wake up server when page loads

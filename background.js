@@ -59,6 +59,7 @@ if (background) {
     updateBackground();
 
 
+    // ----- Event Listeners -----
     let resizeTimeout;
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
@@ -66,5 +67,10 @@ if (background) {
         resizeTimeout = setTimeout(() => {
             updateBackground();
         }, 200);
+    });
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+            updateBackground();
+        }
     });
 }

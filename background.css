@@ -53,7 +53,7 @@ AI DISCLAIMER: The following styling was generated with the assistance of ChatGP
 
 /* Smaller stars move fastest. */
 .background .stars--small {
-    animation-duration: 50s;
+    animation-duration: 150s;
 }
 
 /* Medium stars move more slowly. */
@@ -67,7 +67,7 @@ AI DISCLAIMER: The following styling was generated with the assistance of ChatGP
 .background .stars--large {
     width: 3px;
     height: 3px;
-    animation-duration: 150s;
+    animation-duration: 50s;
 }
 
 @keyframes star-scroll {

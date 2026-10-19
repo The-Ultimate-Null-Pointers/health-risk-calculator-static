@@ -5,8 +5,7 @@ The **Ultimate Health Risk Calculator** is a web-based educational tool created 
 > \*\*Disclaimer:\*\* This calculator is for educational purposes only. Its results are not a medical diagnosis and are not a substitute for advice from a qualified healthcare professional. Do not use the results to make medical decisions.
 
 
-
-`https://victorious-wave-01c3ffd10.4.azurestaticapps.net/`
+[https://victorious-wave-01c3ffd10.4.azurestaticapps.net/]https://victorious-wave-01c3ffd10.4.azurestaticapps.net/
 
 ## Features
 

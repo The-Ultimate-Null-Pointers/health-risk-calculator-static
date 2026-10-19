@@ -235,9 +235,9 @@ async function submitForm() {
     }
 
     document.getElementById("result-content").innerHTML = `
-        <p>${bmiResult.category}</p>
-        <p>${bloodPressureResult.category}</p>
-        <p>${riskScoreResult.category}</p>
+        <p>BMI category: <strong>${bmiResult.category}</strong></p>
+        <p>Blood pressure: <strong>${bloodPressureResult.category}</strong></p>
+        <p class="final-risk">Calculated risk: <strong>${riskScoreResult.category}</strong></p>
     `
     document.getElementById("results-section").hidden = false;
 }

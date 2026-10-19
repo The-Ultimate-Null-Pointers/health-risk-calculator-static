@@ -11,13 +11,9 @@ body {
     background-color: #f5992f;
 }
 
-.header {
-  text-align: center;
-  background-color: #ffebdc;
-  color: rgb(0, 0, 0);
-  padding: 30px 0;
-  width: 100%;
-  border: 5px solid #583011;
+h1, h2, h3, button {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.05em;
 }
 
 /* Card styling */
@@ -35,3 +31,37 @@ body {
     box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.6);
 }
 
+/* Claude AI was used to help make a beautiful backing image for our button. */
+#submit-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+
+  background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("images/walle.jpg");
+  background-size: 140%;          /* fill the button, crop the overflow */
+  background-position: 68% 10%;    /* aim the crop at the robot */
+  background-repeat: no-repeat;
+
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* keeps text readable */
+}
+
+label[for="weight-pounds"]::before {
+  content: "";
+  display: block;
+  margin-top: 12px;
+}
+
+.final-risk {
+  font-size: 1.3em;
+  margin-top: 16px;
+}
+
+hr {
+  border: none;
+  height: 4px;
+  background-color: #583011;
+  border-radius: 2px;
+}

@@ -223,14 +223,19 @@ function validateFamilyHistory(familyHistory) {
 healthForm.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent page reload
 
+    let bmiResult = attemptQueryBMI()
+    let bloodPressureResult = attemptQueryBloodPressure()
     let riskScoreResult = attemptQueryRiskScore()
-    if (riskScoreResult === null) {
+
+    if (bmiResult === null || bloodPressureResult === null || riskScoreResult === null) {
         console.log("Error Submitting Form to Server!!!")
         return
     }
 
     document.getElementById("result-content").innerHTML = `
-        ${riskScoreResult.category}
+        <p>${bmiResult.category}<\\p>
+        <p>${bloodPressureResult.category}<\\p>
+        <p>${riskScoreResult.category}<\\p>
     `
 });
 

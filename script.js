@@ -50,7 +50,7 @@ async function attemptQueryBloodPressure() {
         alert(validation.message)
         return null
     }
-    return await queryServer(API_PATHS.BLOOD_PRESSURE, input)
+    return queryServer(API_PATHS.BLOOD_PRESSURE, input)
 }
 function readBloodPressure() {
     const systolic = Number(document.getElementById("systolic").value)
@@ -90,7 +90,7 @@ async function attemptQueryBMI() {
         alert(validation.message)
         return null
     }
-    return await queryServer(API_PATHS.BMI, input)
+    return queryServer(API_PATHS.BMI, input)
 }
 function readBMI() {
     const heightFeet = Number(document.getElementById("height-feet").value)
@@ -177,7 +177,7 @@ async function attemptQueryRiskScore() {
     )
     if (bmiResult === null) return null
 
-    return await queryServer(API_PATHS.RISK_SCORE, {
+    return queryServer(API_PATHS.RISK_SCORE, {
         age: age,
         bmiCategory: bmiResult.category,
         bloodPressureCategory: bloodPressureResult.category,
@@ -220,12 +220,10 @@ function validateFamilyHistory(familyHistory) {
 }
 
 
-healthForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent page reload
-
-    let bmiResult = attemptQueryBMI()
-    let bloodPressureResult = attemptQueryBloodPressure()
-    let riskScoreResult = attemptQueryRiskScore()
+async function submitForm() {
+    let bmiResult = await attemptQueryBMI()
+    let bloodPressureResult = await attemptQueryBloodPressure()
+    let riskScoreResult = await attemptQueryRiskScore()
 
     console.log("BMI: ", bmiResult)
     console.log("Blood Pressure: ", bloodPressureResult)
@@ -241,6 +239,11 @@ healthForm.addEventListener("submit", (event) => {
         <p>${bloodPressureResult.category}</p>
         <p>${riskScoreResult.category}</p>
     `
+}
+healthForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent page reload
+
+    submitForm()
 });
 
 

@@ -59,6 +59,22 @@ function validateBloodPressure({ systolic, diastolic }) {
     if (systolic <= 0 || diastolic <= 0) {
         return {valid: false, code: "OUT_OF_RANGE", message: "Please enter pysically possible values for blood pressure."}
     }
+        if (systolic < 50 || systolic > 300 ||
+        diastolic < 30 || diastolic > 200) {
+        return {
+            valid: false,
+            code: "OUT_OF_RANGE",
+            message: "Please enter realistic blood pressure values."
+        }
+    }
+
+    if (systolic <= diastolic) {
+        return {
+            valid: false,
+            code: "INVALID_BLOOD_PRESSURE",
+            message: "Systolic pressure must be greater than diastolic pressure."
+        }
+    }
     return {valid: true}
 }
 
@@ -83,6 +99,31 @@ function validateBMI({ heightFeet, heightInches, weightPounds }) {
     }
     if (heightFeet < 0 || heightInches < 0 || weightPounds <= 0) {
         return {valid: false, code: "OUT_OF_RANGE", message: "Please enter physically possible values for height and weight."}
+    }
+        const totalHeightInches = (heightFeet * 12) + heightInches
+
+    if (totalHeightInches < 24) {
+        return {
+            valid: false,
+            code: "HEIGHT_TOO_LOW",
+            message: "Height must be at least 2 feet."
+        }
+    }
+
+    if (heightInches >= 12) {
+        return {
+            valid: false,
+            code: "INVALID_HEIGHT",
+            message: "Please enter 0–11 inches in the inches field."
+        }
+    }
+
+    if (weightPounds > 1400) {
+        return {
+            valid: false,
+            code: "OUT_OF_RANGE",
+            message: "Please enter a realistic weight in pounds."
+        }
     }
     return {valid: true}
 }
@@ -156,6 +197,13 @@ function validateAge(age) {
     }
     if (age < 0) {
         return {valid: false, code: "OUT_OF_RANGE", message: "Please enter a physically possible value for age."}
+    }
+        if (age < 18 || age > 120) {
+        return {
+            valid: false,
+            code: "OUT_OF_RANGE",
+            message: "Age must be between 18 and 120."
+        }
     }
     return {valid: true}
 }

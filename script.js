@@ -5,6 +5,8 @@ const API_PATHS = {
     BMI: '/api/calculate/bmi',
     RISK_SCORE: '/api/calculate/risk-score'
 }
+const healthForm = document.getElementById("health-form");
+
 
 // Wake up server when page loads
 async function pingServer() {
@@ -38,6 +40,9 @@ async function queryServer(path, body) {
 }
 
 
+
+
+
 async function attemptQueryBloodPressure() {
     const input = readBloodPressure()
     const validation = validateBloodPressure(input)
@@ -45,7 +50,7 @@ async function attemptQueryBloodPressure() {
         alert(validation.message)
         return null
     }
-    return queryServer(API_PATHS.BLOOD_PRESSURE, input)
+    return await queryServer(API_PATHS.BLOOD_PRESSURE, input)
 }
 function readBloodPressure() {
     const systolic = Number(document.getElementById("systolic").value)
@@ -85,7 +90,7 @@ async function attemptQueryBMI() {
         alert(validation.message)
         return null
     }
-    return queryServer(API_PATHS.BMI, input)
+    return await queryServer(API_PATHS.BMI, input)
 }
 function readBMI() {
     const heightFeet = Number(document.getElementById("height-feet").value)
@@ -172,7 +177,7 @@ async function attemptQueryRiskScore() {
     )
     if (bmiResult === null) return null
 
-    return queryServer(API_PATHS.RISK_SCORE, {
+    return await queryServer(API_PATHS.RISK_SCORE, {
         age: age,
         bmiCategory: bmiResult.category,
         bloodPressureCategory: bloodPressureResult.category,
@@ -213,6 +218,22 @@ function validateFamilyHistory(familyHistory) {
     }
     return {valid: true}
 }
+
+
+healthForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent page reload
+
+    let riskScoreResult = attemptQueryRiskScore()
+    if (riskScoreResult === null) {
+        console.log("Error Submitting Form to Server!!!")
+        return
+    }
+
+    document.getElementById("result-content").innerHTML = `
+        ${riskScoreResult.category}
+    `
+});
+
 
 
 pingServer()

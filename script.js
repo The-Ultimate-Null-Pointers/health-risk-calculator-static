@@ -239,6 +239,7 @@ async function submitForm() {
         <p>${bloodPressureResult.category}</p>
         <p>${riskScoreResult.category}</p>
     `
+    document.getElementById("results-section").hidden = false;
 }
 healthForm.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent page reload

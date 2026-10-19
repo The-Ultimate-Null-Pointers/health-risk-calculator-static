@@ -233,9 +233,9 @@ healthForm.addEventListener("submit", (event) => {
     }
 
     document.getElementById("result-content").innerHTML = `
-        <p>${bmiResult.category}<\\p>
-        <p>${bloodPressureResult.category}<\\p>
-        <p>${riskScoreResult.category}<\\p>
+        <p>${bmiResult.category}</p>
+        <p>${bloodPressureResult.category}</p>
+        <p>${riskScoreResult.category}</p>
     `
 });
 

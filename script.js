@@ -227,6 +227,10 @@ healthForm.addEventListener("submit", (event) => {
     let bloodPressureResult = attemptQueryBloodPressure()
     let riskScoreResult = attemptQueryRiskScore()
 
+    console.log("BMI: ", bmiResult)
+    console.log("Blood Pressure: ", bloodPressureResult)
+    console.log("Risk Score: ", riskScoreResult)
+
     if (bmiResult === null || bloodPressureResult === null || riskScoreResult === null) {
         console.log("Error Submitting Form to Server!!!")
         return
